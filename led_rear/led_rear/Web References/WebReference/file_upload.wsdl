@@ -1,0 +1,1616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://tempuri.org/AbstractTypes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateFileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Append">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="flag" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AppendResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verify">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="md5" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="flag" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VerifyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="files_name">
+        <s:complexType />
+      </s:element>
+      <s:element name="files_nameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="files_nameResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="screenfiles_name">
+        <s:complexType />
+      </s:element>
+      <s:element name="screenfiles_nameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="screenfiles_nameResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_file">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="file_name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_fileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="delete_fileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_screenfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="file_name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="delete_screenfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="delete_screenfileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="file_name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadFileResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadScreen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="file_name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadScreenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadScreenResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submit_list">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="submit_listResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="submit_listResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="files_size">
+        <s:complexType />
+      </s:element>
+      <s:element name="files_sizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="files_sizeResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_findAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="table" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_findAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Access_findAllResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_find">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_findResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Access_findResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_updateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Access_updateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_insert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_insertResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Access_delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_deleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Access_deleteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_Exist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Access_ExistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Access_ExistResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="channels_id">
+        <s:complexType />
+      </s:element>
+      <s:element name="channels_idResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="channels_idResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="anyType" nillable="true" />
+    </s:schema>
+    <s:schema targetNamespace="http://tempuri.org/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateFileSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateFile" />
+  </wsdl:message>
+  <wsdl:message name="CreateFileSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppendSoapIn">
+    <wsdl:part name="parameters" element="tns:Append" />
+  </wsdl:message>
+  <wsdl:message name="AppendSoapOut">
+    <wsdl:part name="parameters" element="tns:AppendResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifySoapIn">
+    <wsdl:part name="parameters" element="tns:Verify" />
+  </wsdl:message>
+  <wsdl:message name="VerifySoapOut">
+    <wsdl:part name="parameters" element="tns:VerifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="files_nameSoapIn">
+    <wsdl:part name="parameters" element="tns:files_name" />
+  </wsdl:message>
+  <wsdl:message name="files_nameSoapOut">
+    <wsdl:part name="parameters" element="tns:files_nameResponse" />
+  </wsdl:message>
+  <wsdl:message name="screenfiles_nameSoapIn">
+    <wsdl:part name="parameters" element="tns:screenfiles_name" />
+  </wsdl:message>
+  <wsdl:message name="screenfiles_nameSoapOut">
+    <wsdl:part name="parameters" element="tns:screenfiles_nameResponse" />
+  </wsdl:message>
+  <wsdl:message name="delete_fileSoapIn">
+    <wsdl:part name="parameters" element="tns:delete_file" />
+  </wsdl:message>
+  <wsdl:message name="delete_fileSoapOut">
+    <wsdl:part name="parameters" element="tns:delete_fileResponse" />
+  </wsdl:message>
+  <wsdl:message name="delete_screenfileSoapIn">
+    <wsdl:part name="parameters" element="tns:delete_screenfile" />
+  </wsdl:message>
+  <wsdl:message name="delete_screenfileSoapOut">
+    <wsdl:part name="parameters" element="tns:delete_screenfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadFile" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScreenSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadScreen" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScreenSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadScreenResponse" />
+  </wsdl:message>
+  <wsdl:message name="submit_listSoapIn">
+    <wsdl:part name="parameters" element="tns:submit_list" />
+  </wsdl:message>
+  <wsdl:message name="submit_listSoapOut">
+    <wsdl:part name="parameters" element="tns:submit_listResponse" />
+  </wsdl:message>
+  <wsdl:message name="files_sizeSoapIn">
+    <wsdl:part name="parameters" element="tns:files_size" />
+  </wsdl:message>
+  <wsdl:message name="files_sizeSoapOut">
+    <wsdl:part name="parameters" element="tns:files_sizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Access_findAllSoapIn">
+    <wsdl:part name="parameters" element="tns:Access_findAll" />
+  </wsdl:message>
+  <wsdl:message name="Access_findAllSoapOut">
+    <wsdl:part name="parameters" element="tns:Access_findAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="Access_findSoapIn">
+    <wsdl:part name="parameters" element="tns:Access_find" />
+  </wsdl:message>
+  <wsdl:message name="Access_findSoapOut">
+    <wsdl:part name="parameters" element="tns:Access_findResponse" />
+  </wsdl:message>
+  <wsdl:message name="Access_updateSoapIn">
+    <wsdl:part name="parameters" element="tns:Access_update" />
+  </wsdl:message>
+  <wsdl:message name="Access_updateSoapOut">
+    <wsdl:part name="parameters" element="tns:Access_updateResponse" />
+  </wsdl:message>
+  <wsdl:message name="Access_insertSoapIn">
+    <wsdl:part name="parameters" element="tns:Access_insert" />
+  </wsdl:message>
+  <wsdl:message name="Access_insertSoapOut">
+    <wsdl:part name="parameters" element="tns:Access_insertResponse" />
+  </wsdl:message>
+  <wsdl:message name="Access_deleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Access_delete" />
+  </wsdl:message>
+  <wsdl:message name="Access_deleteSoapOut">
+    <wsdl:part name="parameters" element="tns:Access_deleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="Access_ExistSoapIn">
+    <wsdl:part name="parameters" element="tns:Access_Exist" />
+  </wsdl:message>
+  <wsdl:message name="Access_ExistSoapOut">
+    <wsdl:part name="parameters" element="tns:Access_ExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="channels_idSoapIn">
+    <wsdl:part name="parameters" element="tns:channels_id" />
+  </wsdl:message>
+  <wsdl:message name="channels_idSoapOut">
+    <wsdl:part name="parameters" element="tns:channels_idResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateFileHttpGetIn">
+    <wsdl:part name="fileName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AppendHttpGetIn">
+    <wsdl:part name="fileName" type="s:string" />
+    <wsdl:part name="buffer" type="s1:StringArray" />
+    <wsdl:part name="flag" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppendHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="VerifyHttpGetIn">
+    <wsdl:part name="fileName" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+    <wsdl:part name="flag" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VerifyHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="files_nameHttpGetIn" />
+  <wsdl:message name="files_nameHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="screenfiles_nameHttpGetIn" />
+  <wsdl:message name="screenfiles_nameHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="delete_fileHttpGetIn">
+    <wsdl:part name="file_name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="delete_fileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="delete_screenfileHttpGetIn">
+    <wsdl:part name="file_name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="delete_screenfileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileHttpGetIn">
+    <wsdl:part name="file_name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScreenHttpGetIn">
+    <wsdl:part name="file_name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScreenHttpGetOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="submit_listHttpGetIn">
+    <wsdl:part name="listname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="submit_listHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="files_sizeHttpGetIn" />
+  <wsdl:message name="files_sizeHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="Access_findAllHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+    <wsdl:part name="table" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_findAllHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Access_findHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_findHttpGetOut">
+    <wsdl:part name="Body" element="tns:anyType" />
+  </wsdl:message>
+  <wsdl:message name="Access_updateHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_updateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_insertHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_insertHttpGetOut" />
+  <wsdl:message name="Access_deleteHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_deleteHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_ExistHttpGetIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_ExistHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="channels_idHttpGetIn" />
+  <wsdl:message name="channels_idHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateFileHttpPostIn">
+    <wsdl:part name="fileName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreateFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AppendHttpPostIn">
+    <wsdl:part name="fileName" type="s:string" />
+    <wsdl:part name="buffer" type="s1:StringArray" />
+    <wsdl:part name="flag" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AppendHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="VerifyHttpPostIn">
+    <wsdl:part name="fileName" type="s:string" />
+    <wsdl:part name="md5" type="s:string" />
+    <wsdl:part name="flag" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VerifyHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="files_nameHttpPostIn" />
+  <wsdl:message name="files_nameHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="screenfiles_nameHttpPostIn" />
+  <wsdl:message name="screenfiles_nameHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="delete_fileHttpPostIn">
+    <wsdl:part name="file_name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="delete_fileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="delete_screenfileHttpPostIn">
+    <wsdl:part name="file_name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="delete_screenfileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileHttpPostIn">
+    <wsdl:part name="file_name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScreenHttpPostIn">
+    <wsdl:part name="file_name" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScreenHttpPostOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="submit_listHttpPostIn">
+    <wsdl:part name="listname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="submit_listHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="files_sizeHttpPostIn" />
+  <wsdl:message name="files_sizeHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="Access_findAllHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+    <wsdl:part name="table" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_findAllHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Access_findHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_findHttpPostOut">
+    <wsdl:part name="Body" element="tns:anyType" />
+  </wsdl:message>
+  <wsdl:message name="Access_updateHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_updateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_insertHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_insertHttpPostOut" />
+  <wsdl:message name="Access_deleteHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_deleteHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_ExistHttpPostIn">
+    <wsdl:part name="sql" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Access_ExistHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="channels_idHttpPostIn" />
+  <wsdl:message name="channels_idHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="file_uploadSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">测试</wsdl:documentation>
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">在服务器上创建文件</wsdl:documentation>
+      <wsdl:input message="tns:CreateFileSoapIn" />
+      <wsdl:output message="tns:CreateFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Append">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">上传文件</wsdl:documentation>
+      <wsdl:input message="tns:AppendSoapIn" />
+      <wsdl:output message="tns:AppendSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verify">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">验证文件是否存在</wsdl:documentation>
+      <wsdl:input message="tns:VerifySoapIn" />
+      <wsdl:output message="tns:VerifySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="files_name">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取文件列表</wsdl:documentation>
+      <wsdl:input message="tns:files_nameSoapIn" />
+      <wsdl:output message="tns:files_nameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="screenfiles_name">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取截图列表</wsdl:documentation>
+      <wsdl:input message="tns:screenfiles_nameSoapIn" />
+      <wsdl:output message="tns:screenfiles_nameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_file">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除文件</wsdl:documentation>
+      <wsdl:input message="tns:delete_fileSoapIn" />
+      <wsdl:output message="tns:delete_fileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_screenfile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除截图</wsdl:documentation>
+      <wsdl:input message="tns:delete_screenfileSoapIn" />
+      <wsdl:output message="tns:delete_screenfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">下载服务器上的文件</wsdl:documentation>
+      <wsdl:input message="tns:DownloadFileSoapIn" />
+      <wsdl:output message="tns:DownloadFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScreen">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">下载服务器上的截图</wsdl:documentation>
+      <wsdl:input message="tns:DownloadScreenSoapIn" />
+      <wsdl:output message="tns:DownloadScreenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="submit_list">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送播放表单</wsdl:documentation>
+      <wsdl:input message="tns:submit_listSoapIn" />
+      <wsdl:output message="tns:submit_listSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="files_size">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取getscreen文件夹下所有文件大小</wsdl:documentation>
+      <wsdl:input message="tns:files_sizeSoapIn" />
+      <wsdl:output message="tns:files_sizeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_findAll">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询多条记录，返回Dataset类型数据</wsdl:documentation>
+      <wsdl:input message="tns:Access_findAllSoapIn" />
+      <wsdl:output message="tns:Access_findAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_find">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询单条记录，返回object类型数据</wsdl:documentation>
+      <wsdl:input message="tns:Access_findSoapIn" />
+      <wsdl:output message="tns:Access_findSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新记录，返回字符串形式更新情况</wsdl:documentation>
+      <wsdl:input message="tns:Access_updateSoapIn" />
+      <wsdl:output message="tns:Access_updateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_insert">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入记录，不返回插入结果</wsdl:documentation>
+      <wsdl:input message="tns:Access_insertSoapIn" />
+      <wsdl:output message="tns:Access_insertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_delete">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除记录，字符串形式返回删除结果</wsdl:documentation>
+      <wsdl:input message="tns:Access_deleteSoapIn" />
+      <wsdl:output message="tns:Access_deleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_Exist">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">检查是否有目标记录，返回bool型结果</wsdl:documentation>
+      <wsdl:input message="tns:Access_ExistSoapIn" />
+      <wsdl:output message="tns:Access_ExistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="channels_id">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">返回当前链接id</wsdl:documentation>
+      <wsdl:input message="tns:channels_idSoapIn" />
+      <wsdl:output message="tns:channels_idSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="file_uploadHttpGet">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">测试</wsdl:documentation>
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">在服务器上创建文件</wsdl:documentation>
+      <wsdl:input message="tns:CreateFileHttpGetIn" />
+      <wsdl:output message="tns:CreateFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Append">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">上传文件</wsdl:documentation>
+      <wsdl:input message="tns:AppendHttpGetIn" />
+      <wsdl:output message="tns:AppendHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verify">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">验证文件是否存在</wsdl:documentation>
+      <wsdl:input message="tns:VerifyHttpGetIn" />
+      <wsdl:output message="tns:VerifyHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="files_name">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取文件列表</wsdl:documentation>
+      <wsdl:input message="tns:files_nameHttpGetIn" />
+      <wsdl:output message="tns:files_nameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="screenfiles_name">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取截图列表</wsdl:documentation>
+      <wsdl:input message="tns:screenfiles_nameHttpGetIn" />
+      <wsdl:output message="tns:screenfiles_nameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_file">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除文件</wsdl:documentation>
+      <wsdl:input message="tns:delete_fileHttpGetIn" />
+      <wsdl:output message="tns:delete_fileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_screenfile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除截图</wsdl:documentation>
+      <wsdl:input message="tns:delete_screenfileHttpGetIn" />
+      <wsdl:output message="tns:delete_screenfileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">下载服务器上的文件</wsdl:documentation>
+      <wsdl:input message="tns:DownloadFileHttpGetIn" />
+      <wsdl:output message="tns:DownloadFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScreen">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">下载服务器上的截图</wsdl:documentation>
+      <wsdl:input message="tns:DownloadScreenHttpGetIn" />
+      <wsdl:output message="tns:DownloadScreenHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="submit_list">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送播放表单</wsdl:documentation>
+      <wsdl:input message="tns:submit_listHttpGetIn" />
+      <wsdl:output message="tns:submit_listHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="files_size">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取getscreen文件夹下所有文件大小</wsdl:documentation>
+      <wsdl:input message="tns:files_sizeHttpGetIn" />
+      <wsdl:output message="tns:files_sizeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_findAll">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询多条记录，返回Dataset类型数据</wsdl:documentation>
+      <wsdl:input message="tns:Access_findAllHttpGetIn" />
+      <wsdl:output message="tns:Access_findAllHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_find">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询单条记录，返回object类型数据</wsdl:documentation>
+      <wsdl:input message="tns:Access_findHttpGetIn" />
+      <wsdl:output message="tns:Access_findHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新记录，返回字符串形式更新情况</wsdl:documentation>
+      <wsdl:input message="tns:Access_updateHttpGetIn" />
+      <wsdl:output message="tns:Access_updateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_insert">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入记录，不返回插入结果</wsdl:documentation>
+      <wsdl:input message="tns:Access_insertHttpGetIn" />
+      <wsdl:output message="tns:Access_insertHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_delete">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除记录，字符串形式返回删除结果</wsdl:documentation>
+      <wsdl:input message="tns:Access_deleteHttpGetIn" />
+      <wsdl:output message="tns:Access_deleteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_Exist">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">检查是否有目标记录，返回bool型结果</wsdl:documentation>
+      <wsdl:input message="tns:Access_ExistHttpGetIn" />
+      <wsdl:output message="tns:Access_ExistHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="channels_id">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">返回当前链接id</wsdl:documentation>
+      <wsdl:input message="tns:channels_idHttpGetIn" />
+      <wsdl:output message="tns:channels_idHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="file_uploadHttpPost">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">测试</wsdl:documentation>
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">在服务器上创建文件</wsdl:documentation>
+      <wsdl:input message="tns:CreateFileHttpPostIn" />
+      <wsdl:output message="tns:CreateFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Append">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">上传文件</wsdl:documentation>
+      <wsdl:input message="tns:AppendHttpPostIn" />
+      <wsdl:output message="tns:AppendHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verify">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">验证文件是否存在</wsdl:documentation>
+      <wsdl:input message="tns:VerifyHttpPostIn" />
+      <wsdl:output message="tns:VerifyHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="files_name">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取文件列表</wsdl:documentation>
+      <wsdl:input message="tns:files_nameHttpPostIn" />
+      <wsdl:output message="tns:files_nameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="screenfiles_name">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取截图列表</wsdl:documentation>
+      <wsdl:input message="tns:screenfiles_nameHttpPostIn" />
+      <wsdl:output message="tns:screenfiles_nameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_file">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除文件</wsdl:documentation>
+      <wsdl:input message="tns:delete_fileHttpPostIn" />
+      <wsdl:output message="tns:delete_fileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delete_screenfile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除截图</wsdl:documentation>
+      <wsdl:input message="tns:delete_screenfileHttpPostIn" />
+      <wsdl:output message="tns:delete_screenfileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">下载服务器上的文件</wsdl:documentation>
+      <wsdl:input message="tns:DownloadFileHttpPostIn" />
+      <wsdl:output message="tns:DownloadFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScreen">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">下载服务器上的截图</wsdl:documentation>
+      <wsdl:input message="tns:DownloadScreenHttpPostIn" />
+      <wsdl:output message="tns:DownloadScreenHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="submit_list">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">发送播放表单</wsdl:documentation>
+      <wsdl:input message="tns:submit_listHttpPostIn" />
+      <wsdl:output message="tns:submit_listHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="files_size">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取getscreen文件夹下所有文件大小</wsdl:documentation>
+      <wsdl:input message="tns:files_sizeHttpPostIn" />
+      <wsdl:output message="tns:files_sizeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_findAll">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询多条记录，返回Dataset类型数据</wsdl:documentation>
+      <wsdl:input message="tns:Access_findAllHttpPostIn" />
+      <wsdl:output message="tns:Access_findAllHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_find">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">查询单条记录，返回object类型数据</wsdl:documentation>
+      <wsdl:input message="tns:Access_findHttpPostIn" />
+      <wsdl:output message="tns:Access_findHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_update">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更新记录，返回字符串形式更新情况</wsdl:documentation>
+      <wsdl:input message="tns:Access_updateHttpPostIn" />
+      <wsdl:output message="tns:Access_updateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_insert">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">插入记录，不返回插入结果</wsdl:documentation>
+      <wsdl:input message="tns:Access_insertHttpPostIn" />
+      <wsdl:output message="tns:Access_insertHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_delete">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除记录，字符串形式返回删除结果</wsdl:documentation>
+      <wsdl:input message="tns:Access_deleteHttpPostIn" />
+      <wsdl:output message="tns:Access_deleteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Access_Exist">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">检查是否有目标记录，返回bool型结果</wsdl:documentation>
+      <wsdl:input message="tns:Access_ExistHttpPostIn" />
+      <wsdl:output message="tns:Access_ExistHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="channels_id">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">返回当前链接id</wsdl:documentation>
+      <wsdl:input message="tns:channels_idHttpPostIn" />
+      <wsdl:output message="tns:channels_idHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="file_uploadSoap" type="tns:file_uploadSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFile">
+      <soap:operation soapAction="http://tempuri.org/CreateFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Append">
+      <soap:operation soapAction="http://tempuri.org/Append" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verify">
+      <soap:operation soapAction="http://tempuri.org/Verify" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="files_name">
+      <soap:operation soapAction="http://tempuri.org/files_name" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="screenfiles_name">
+      <soap:operation soapAction="http://tempuri.org/screenfiles_name" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_file">
+      <soap:operation soapAction="http://tempuri.org/delete_file" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_screenfile">
+      <soap:operation soapAction="http://tempuri.org/delete_screenfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <soap:operation soapAction="http://tempuri.org/DownloadFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScreen">
+      <soap:operation soapAction="http://tempuri.org/DownloadScreen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submit_list">
+      <soap:operation soapAction="http://tempuri.org/submit_list" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="files_size">
+      <soap:operation soapAction="http://tempuri.org/files_size" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_findAll">
+      <soap:operation soapAction="http://tempuri.org/Access_findAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_find">
+      <soap:operation soapAction="http://tempuri.org/Access_find" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_update">
+      <soap:operation soapAction="http://tempuri.org/Access_update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_insert">
+      <soap:operation soapAction="http://tempuri.org/Access_insert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_delete">
+      <soap:operation soapAction="http://tempuri.org/Access_delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_Exist">
+      <soap:operation soapAction="http://tempuri.org/Access_Exist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="channels_id">
+      <soap:operation soapAction="http://tempuri.org/channels_id" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="file_uploadSoap12" type="tns:file_uploadSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFile">
+      <soap12:operation soapAction="http://tempuri.org/CreateFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Append">
+      <soap12:operation soapAction="http://tempuri.org/Append" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verify">
+      <soap12:operation soapAction="http://tempuri.org/Verify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="files_name">
+      <soap12:operation soapAction="http://tempuri.org/files_name" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="screenfiles_name">
+      <soap12:operation soapAction="http://tempuri.org/screenfiles_name" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_file">
+      <soap12:operation soapAction="http://tempuri.org/delete_file" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_screenfile">
+      <soap12:operation soapAction="http://tempuri.org/delete_screenfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <soap12:operation soapAction="http://tempuri.org/DownloadFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScreen">
+      <soap12:operation soapAction="http://tempuri.org/DownloadScreen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submit_list">
+      <soap12:operation soapAction="http://tempuri.org/submit_list" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="files_size">
+      <soap12:operation soapAction="http://tempuri.org/files_size" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_findAll">
+      <soap12:operation soapAction="http://tempuri.org/Access_findAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_find">
+      <soap12:operation soapAction="http://tempuri.org/Access_find" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_update">
+      <soap12:operation soapAction="http://tempuri.org/Access_update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_insert">
+      <soap12:operation soapAction="http://tempuri.org/Access_insert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_delete">
+      <soap12:operation soapAction="http://tempuri.org/Access_delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_Exist">
+      <soap12:operation soapAction="http://tempuri.org/Access_Exist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="channels_id">
+      <soap12:operation soapAction="http://tempuri.org/channels_id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="file_uploadHttpGet" type="tns:file_uploadHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFile">
+      <http:operation location="/CreateFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Append">
+      <http:operation location="/Append" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verify">
+      <http:operation location="/Verify" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="files_name">
+      <http:operation location="/files_name" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="screenfiles_name">
+      <http:operation location="/screenfiles_name" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_file">
+      <http:operation location="/delete_file" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_screenfile">
+      <http:operation location="/delete_screenfile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <http:operation location="/DownloadFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScreen">
+      <http:operation location="/DownloadScreen" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submit_list">
+      <http:operation location="/submit_list" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="files_size">
+      <http:operation location="/files_size" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_findAll">
+      <http:operation location="/Access_findAll" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_find">
+      <http:operation location="/Access_find" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_update">
+      <http:operation location="/Access_update" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_insert">
+      <http:operation location="/Access_insert" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Access_delete">
+      <http:operation location="/Access_delete" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_Exist">
+      <http:operation location="/Access_Exist" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="channels_id">
+      <http:operation location="/channels_id" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="file_uploadHttpPost" type="tns:file_uploadHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFile">
+      <http:operation location="/CreateFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Append">
+      <http:operation location="/Append" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verify">
+      <http:operation location="/Verify" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="files_name">
+      <http:operation location="/files_name" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="screenfiles_name">
+      <http:operation location="/screenfiles_name" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_file">
+      <http:operation location="/delete_file" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete_screenfile">
+      <http:operation location="/delete_screenfile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadFile">
+      <http:operation location="/DownloadFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScreen">
+      <http:operation location="/DownloadScreen" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submit_list">
+      <http:operation location="/submit_list" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="files_size">
+      <http:operation location="/files_size" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_findAll">
+      <http:operation location="/Access_findAll" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_find">
+      <http:operation location="/Access_find" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_update">
+      <http:operation location="/Access_update" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_insert">
+      <http:operation location="/Access_insert" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Access_delete">
+      <http:operation location="/Access_delete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Access_Exist">
+      <http:operation location="/Access_Exist" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="channels_id">
+      <http:operation location="/channels_id" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="file_upload">
+    <wsdl:port name="file_uploadSoap" binding="tns:file_uploadSoap">
+      <soap:address location="http://148.70.15.188:8011/file_upload.asmx" />
+    </wsdl:port>
+    <wsdl:port name="file_uploadSoap12" binding="tns:file_uploadSoap12">
+      <soap12:address location="http://148.70.15.188:8011/file_upload.asmx" />
+    </wsdl:port>
+    <wsdl:port name="file_uploadHttpGet" binding="tns:file_uploadHttpGet">
+      <http:address location="http://148.70.15.188:8011/file_upload.asmx" />
+    </wsdl:port>
+    <wsdl:port name="file_uploadHttpPost" binding="tns:file_uploadHttpPost">
+      <http:address location="http://148.70.15.188:8011/file_upload.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
