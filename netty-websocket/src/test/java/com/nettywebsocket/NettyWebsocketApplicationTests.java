@@ -1,4 +1,4 @@
-package com.wangzai.nettywebsocket;
+package com.nettywebsocket;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

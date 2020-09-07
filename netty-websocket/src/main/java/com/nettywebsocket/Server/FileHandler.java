@@ -1,4 +1,4 @@
-package com.wangzai.nettywebsocket.Server;
+package com.nettywebsocket.Server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

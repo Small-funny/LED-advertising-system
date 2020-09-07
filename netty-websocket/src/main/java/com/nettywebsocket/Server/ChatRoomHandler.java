@@ -1,4 +1,4 @@
-package com.wangzai.nettywebsocket.Server;
+package com.nettywebsocket.Server;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
@@ -39,7 +39,6 @@ public class ChatRoomHandler extends SimpleChannelInboundHandler<TextWebSocketFr
 //            System.out.println(ss[2]);
         }
 
-
         if(content.contains(".mp4"))
         {
             File writename = new File("C:\\inetpub\\wwwroot\\upload_files\\playlist.txt"); // 相对路径，如果没有则要建立一个新的output。txt文件
@@ -65,7 +64,6 @@ public class ChatRoomHandler extends SimpleChannelInboundHandler<TextWebSocketFr
                     channel.writeAndFlush(new TextWebSocketFrame(content));
                     break;
                 }
-
             }
         }
         else{
@@ -74,7 +72,6 @@ public class ChatRoomHandler extends SimpleChannelInboundHandler<TextWebSocketFr
             }
         }
     }
-
 
     //进入:,提示所有人,有人进来了
     @Override

@@ -1,4 +1,4 @@
-package com.wangzai.nettywebsocket.Server;
+package com.nettywebsocket.Server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
