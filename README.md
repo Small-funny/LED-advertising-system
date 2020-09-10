@@ -1,9 +1,9 @@
 # LED-advertising-system
-flutter+第三方服务+winform实现的Android端广告播放与后台管理系统
+flutter+转发服务器+winform实现的Android端广告播放与后台管理系统
 
 ## 系统架构
 - 后端(server branch)
-    - WebSocket转发服务器
+    - Netty WebSocket转发服务器
     - Restful API
     - WebService
 - 安卓前端(front branch)
